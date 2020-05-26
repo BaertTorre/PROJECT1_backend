@@ -15,6 +15,7 @@ def ultrasonic_sensor():
     GPIO.output(trigger, True)
     time.sleep(0.00001)
     GPIO.output(trigger, False)
+    pulse_start = time.time()
     while GPIO.input(echo)==0:              # de sensor zet de echo pin achteraf evenlang high als het gedruurt heeft voor de trigger puls terug te keren
         pulse_start = time.time()
     while GPIO.input(echo)==1:
