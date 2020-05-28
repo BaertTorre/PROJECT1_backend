@@ -27,6 +27,9 @@ def initial_connection():
 def ultrasonic():
     distance = []
     distance.append(ultrasonic_sensor1.ultrasonic_sensor_uitlezen())
+    i = 0
+    for value in distance:
+        DataRepository.add_ultrasone_waarde(value, i)
     socketio.emit('B2F_ultrasonic_data', distance)
 
 

@@ -37,11 +37,11 @@ class Database:
             Database.cursor.close()
             if (result is None):
                 print(ValueError(f"Resultaten zijn onbestaand.[DB Error]"))
-            Database.db.close()
         except Exception as error:
             print(error)  # development boodschap
             result = None
         finally:
+            Database.db.close()
             return result
 
     @staticmethod
