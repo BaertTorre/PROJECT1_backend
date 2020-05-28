@@ -5,6 +5,7 @@ from flask_cors import CORS
 from RPi import GPIO
 
 from model.Ultrasonic_sensor import Ultrasonic_sensor
+from model.Esp8266 import Esp8266
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
