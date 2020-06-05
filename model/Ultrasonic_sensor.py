@@ -11,7 +11,7 @@ class Ultrasonic_sensor:
         GPIO.setup(self.echo, GPIO.IN)
         GPIO.setup(self.trigger, GPIO.OUT)
         GPIO.output(self.trigger, GPIO.LOW)
-        time.sleep(2)
+        time.sleep(1)
 
     def ultrasonic_sensor_uitlezen(self):
         GPIO.output(self.trigger, True)
