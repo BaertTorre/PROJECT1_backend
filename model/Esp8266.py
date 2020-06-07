@@ -11,5 +11,9 @@ class Esp8266:
     @staticmethod
     def read_LDR():
         ser.write(b'LDR')                     # write a string de 'b' zorgt ervoor dat de tekst gecodeert wordt in bytes
-        data = int(Esp8266.read_serial())
+        data = Esp8266.read_serial()
+        try:
+            data = int(data)
+        except Exception:
+            data = None
         return data
