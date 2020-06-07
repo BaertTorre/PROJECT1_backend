@@ -10,12 +10,26 @@ class DataRepository:
         return gegevens
 
     @staticmethod
-    def __make_time_event(error_id):
+    def make_time_event(error_id):
         sql = f"INSERT INTO `time` (`error codes_id error code`) VALUES ({error_id});"
         return Database.execute_sql(sql)
 
     @staticmethod
-    def add_ultrasone_waarde(ultrasone_data, ultrasone_positie):
-        id_time = DataRepository.__make_time_event(200)
-        sql = f"INSERT INTO `ultrasonic data` (`ultrasonic data`,`ultrasonic positie rechts midden links`,`time_id time`) VALUES ({ultrasone_data},{ultrasone_positie},{id_time});"
+    def add_ultrasone_waarde(ultrasone_data_rechts, ultrasone_data_midden, ultrasone_data_links, id_time):
+        sql = f"INSERT INTO `ultrasonic data` (`ultrasonic data rechts`,`ultrasonic data midden`,`ultrasonic data links`,`time_id time`) VALUES ({ultrasone_data_rechts},{ultrasone_data_midden},{ultrasone_data_links},{id_time});"
+        return Database.execute_sql(sql)
+
+    @staticmethod
+    def add_ldr_waarde(ldr_value, id_time):
+        sql = f"INSERT INTO `LDR data` (`LDR data`, `time_id time`) VALUES ({ldr_value},{id_time});"
+        return Database.execute_sql(sql)
+
+    @staticmethod
+    def add_led_waarde(led_value, id_time):
+        sql = f"INSERT INTO `LED data` (`led aan uit`, `time_id time`) VALUES ({led_value},{id_time});"
+        return Database.execute_sql(sql)
+
+    @staticmethod
+    def add_gps_data(coordinaat_lengte, coordinaat_breedte, speed, id_time):
+        sql = f"INSERT INTO `GPS data` (`coordinaat lengte`, `coordinaat breedte`, `speed`,`time_id time`) VALUES ({coordinaat_lengte},{coordinaat_breedte},{speed},{id_time});"
         return Database.execute_sql(sql)

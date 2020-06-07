@@ -23,6 +23,10 @@ class PWM_reader:
         Returns the PWM pulse width in microseconds.
         """
         if self._high is not None:
+            if self._high > 2000:
+                self._high = 2000
+            elif self._high < 1000:
+                self._high = 1000
             return self._high
         else:
             return 0.0
