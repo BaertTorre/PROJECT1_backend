@@ -2,7 +2,7 @@ import serial
 import math 
 from math import sin, cos, sqrt, atan2, radians
 
-ser = serial.Serial('/dev/serial0')     # open serial port (serial0 is altijd de seriele poort en geen bluetooth ongeacht de config)
+ser = serial.Serial('/dev/ttyAMA1')     # open serial port, dit is de 2de seriele poort op de pi 4
 
 class GPS:
     def __init__(self):

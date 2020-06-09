@@ -72,6 +72,10 @@ def besturing():
     global ultrasonic_rechts_afstand
     global ultrasonic_midden_afstand
     global ultrasonic_links_afstand
+    global channel1
+    global channel2
+    global channel3
+    print(channel1.pulse_width())
     if channel1.pulse_width():              # checken of er verbinding is met de controller
         puls_width1 = omvormen_voor_servo(channel1.pulse_width())
         puls_width2 = omvormen_voor_esc(channel2.pulse_width())
@@ -131,6 +135,7 @@ def serieel_uitlezen_gps():
     global coordinaten
     while running == True:
         # coordinaten = GPS1.read_GPS_cor()
+        time.sleep(0.1)
         pass
 
 def socket_start():
@@ -221,6 +226,6 @@ finally:
     pi.set_servo_pulsewidth(esc_pin_hover, 0)
     pi.set_servo_pulsewidth(esc_pin_forward, 0)
     socketio.stop()
-    time.sleep(6)                                       # zodat alle threads mooi kunnen afsluiten
+    time.sleep(7)                     # zodat alle threads mooi kunnen afsluiten
     GPIO.cleanup()
     pi.stop()
